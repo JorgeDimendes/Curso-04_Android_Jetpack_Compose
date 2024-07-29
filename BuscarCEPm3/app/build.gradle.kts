@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -66,4 +67,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Room
+    ksp("androidx.room:room-compiler:2.5.0")
+
+    // Nevegação
+    val nav_version = "2.7.7"
+    implementation ("androidx.navigation:navigation-compose:$nav_version")
+
+
+
 }
