@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp")
+    //id("com.google.devtools.ksp")
+    id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -69,11 +71,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //Room
-    ksp("androidx.room:room-compiler:2.5.0")
+    //ksp("androidx.room:room-compiler:2.5.0")
+    kapt ("com.google.dagger:hilt-compiler:2.44")
 
     // Nevegação
     val nav_version = "2.7.7"
     implementation ("androidx.navigation:navigation-compose:$nav_version")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    //hilt
+    implementation ("com.google.dagger:hilt-android:2.49")
+
+
+
+
 
 
 

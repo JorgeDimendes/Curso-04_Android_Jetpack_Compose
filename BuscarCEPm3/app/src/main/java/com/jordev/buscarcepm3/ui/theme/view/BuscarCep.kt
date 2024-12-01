@@ -1,6 +1,7 @@
 package com.jordev.buscarcepm3.ui.theme.view
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,17 +30,20 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.jordev.buscarcepm3.ui.theme.Teal700
 import com.jordev.buscarcepm3.ui.theme.WHITE
 import com.jordev.buscarcepm3.ui.theme.componentes.Botao
 import com.jordev.buscarcepm3.ui.theme.componentes.CaixaTexto
+import com.jordev.buscarcepm3.ui.theme.viewmodel.BuscarCepViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun BuscarCep(
-    navController: NavController
+    navController: NavController,
+    viewModel: BuscarCepViewModel = hiltViewModel()
 ){
     var inputCep by remember{mutableStateOf("")}
     var inputLogradouro by remember{mutableStateOf("")}
@@ -86,7 +90,7 @@ fun BuscarCep(
 
                 Botao(
                     onClick = {
-
+                        Toast.makeText(context, viewModel.valor(), Toast.LENGTH_SHORT).show()
                     },
                     texto = "Buscar Cep",
                     modifier = Modifier
@@ -163,18 +167,6 @@ fun BuscarCep(
                         .fillMaxWidth()
 
                 )
-                
-                Button(
-                    onClick = { 
-                        
-                    },
-                    modifier = Modifier.fillMaxWidth().padding(20.dp,0.dp).height(55.dp),
-                    colors =  ButtonDefaults.buttonColors(Teal700)
-                )
-
-                {
-                    Text(text = "Miriele Menezes", fontSize = 22.sp)
-                }
             }
 
         }
